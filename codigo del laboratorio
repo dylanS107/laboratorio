@@ -1,0 +1,98 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package p1taller1sosadylan;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author ESPE
+ */
+public class P1Taller1SosaDylan {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+        
+        do {
+            System.out.println("Calculadora de áreas y perímetros de figuras geométricas");
+            System.out.println("1. Calcular área y perímetro de un cuadrado");
+            System.out.println("2. Calcular área y perímetro de un círculo");
+            System.out.println("3. Calcular área y perímetro de un triángulo");
+            System.out.println("0. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+            
+            switch(opcion) {
+                case 1:
+                    calcularCuadrado(scanner);
+                    break;
+                case 2:
+                    calcularCirculo(scanner);
+                    break;
+                case 3:
+                    calcularTriangulo(scanner);
+                    break;
+                case 0:
+                    System.out.println("Saliendo de la calculadora...");
+                    break;
+                default:
+                    System.out.println("Opción no válida, por favor seleccione nuevamente.");
+            }
+        } while(opcion != 0);
+        
+        scanner.close();
+    }
+    
+    public static void calcularCuadrado(Scanner scanner) {
+        double lado;
+        do{
+        System.out.print("Ingrese el lado del cuadrado(1-100) ");
+        lado = scanner.nextDouble();
+        if(lado<=0 ||lado>100){
+            System.out.println("intente de nuevo");
+        }
+        }while(lado<=0 ||lado>100);
+        double area = lado * lado;
+        double perimetro = 4 * lado;
+        System.out.println("El área del cuadrado es: " + area);
+        System.out.println("El perímetro del cuadrado es: " + perimetro);
+    }
+    
+    public static void calcularCirculo(Scanner scanner) {
+        double radio;
+        final double PI = 3.1416;
+        do{
+        System.out.print("Ingrese el radio del círculo: ");
+        radio = scanner.nextDouble();
+        if(radio<=0||radio>100){
+            System.out.println("intente ed nuevo");
+        }
+        }while(radio<=0||radio>100);
+        double area = PI * radio * radio;
+        double perimetro = 2 * PI * radio;
+        System.out.println("El área del círculo es: " + area);
+        System.out.println("El perímetro del círculo es: " + perimetro);
+    }
+    
+    public static void calcularTriangulo(Scanner scanner) {
+        double base,altura;
+        System.out.print("Ingrese la base del triángulo: ");
+        base = scanner.nextDouble();
+        
+        System.out.print("Ingrese la altura del triángulo: ");
+        altura = scanner.nextDouble();
+        double area = (base * altura) / 2;
+        // Para el perímetro se asumirá que es un triángulo equilátero por simplicidad
+        double perimetro = 3 * base;
+        System.out.println("El área del triángulo es: " + area);
+        System.out.println("El perímetro del triángulo es: " + perimetro);
+    }
+}   
+
